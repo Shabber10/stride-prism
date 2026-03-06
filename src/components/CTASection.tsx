@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import SportsBackground from "@/components/SportsBackground";
 
 const CTASection = () => {
   const ref = useRef(null);
@@ -9,10 +10,7 @@ const CTASection = () => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-        <div className="absolute w-[600px] h-[600px] rounded-full blur-[150px] bg-primary/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-      </div>
+      <SportsBackground variant="cta" />
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div

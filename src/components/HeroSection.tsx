@@ -3,31 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import productImage from "@/assets/product-device.png";
-
-const Particle = ({ index }: { index: number }) => {
-  const size = Math.random() * 3 + 1;
-  const x = Math.random() * 100;
-  const y = Math.random() * 100;
-  const duration = Math.random() * 4 + 4;
-  const delay = Math.random() * 3;
-
-  return (
-    <motion.div
-      className="absolute rounded-full bg-primary/30"
-      style={{ width: size, height: size, left: `${x}%`, top: `${y}%` }}
-      animate={{
-        y: [0, -30, 0],
-        opacity: [0, 0.8, 0],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-  );
-};
+import SportsBackground from "@/components/SportsBackground";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,29 +27,8 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background layers */}
-      <div className="absolute inset-0 gradient-mesh" />
-      <div
-        className="absolute w-[600px] h-[600px] rounded-full blur-[120px] bg-primary/10 transition-transform duration-700"
-        style={{ transform: `translate(${mousePos.x * 2}px, ${mousePos.y * 2}px)` }}
-      />
-      <div
-        className="absolute w-[400px] h-[400px] rounded-full blur-[100px] bg-accent/8 top-1/4 right-1/4 transition-transform duration-700"
-        style={{ transform: `translate(${-mousePos.x}px, ${-mousePos.y}px)` }}
-      />
-
-      {/* Particles */}
-      {Array.from({ length: 30 }).map((_, i) => (
-        <Particle key={i} index={i} />
-      ))}
-
-      {/* Grid lines */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Dynamic sports background */}
+      <SportsBackground variant="hero" />
 
       <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 pt-20">
         {/* Text content */}
